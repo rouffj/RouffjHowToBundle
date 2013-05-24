@@ -1,11 +1,13 @@
-HowToBundle
-===========
+RouffjHowToBundle
+=================
+
+Project which experiment "Learning By Automatic Testing" concept.
 
 Installation
 ------------
 
-Step 1: Download HowToBundle using Composer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 1: Download RouffjHowToBundle using Composer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Tell composer to add RouffjHowToBundle in your composer.json and download it by running the command:
 
