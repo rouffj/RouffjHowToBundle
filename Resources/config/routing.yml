@@ -1,0 +1,4 @@
+rouffj_howto_security:
+    resource: "@RouffjHowToBundle/Controller/Security"
+    type:     annotation
+    prefix:   /howto/security
