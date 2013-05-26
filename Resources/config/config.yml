@@ -1,33 +1,5 @@
-security:
-    access_decision_manager:
-        strategy: unanimous
-
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-
-    encoders:
-            Symfony\Component\Security\Core\User\User: plaintext
-
-    providers:
-        in_memory:
-            memory:
-                users:
-                    user1:  { password: user1pass, roles: ['ROLE_USER'] }
-                    user2:  { password: user2pass, roles: ['ROLE_USER'] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-
-    firewalls:
-        homepage:
-            pattern: ^/howto/security/voter/1$
-            anonymous: true
-        voter:
-            pattern:    ^/howto/security/voter/1
-            http_basic:
-                realm: "Beta area"
-
-    access_control:
-            - { path: ^/.*, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
+imports:
+    - { resource: security.yml }
 
 parameters:
     test.client.class:      Rouffj\Bundle\HowToBundle\Tests\Client
