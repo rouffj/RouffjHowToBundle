@@ -13,7 +13,7 @@ Tell composer to add RouffjHowToBundle in your composer.json and download it by 
 
 ::
 
-    $ php composer.phar require rouffj/howto-bundle *
+    $ composer.phar require "rouffj/howto-bundle dev-master"
 
 Composer will install the bundle to your project's vendor/rouffj directory.
 
@@ -31,7 +31,7 @@ Enable the bundle in the kernel:
     {
         $bundles = array(
             // ...
-            new Rouffj\Bundle\HowToBundle(),
+            new Rouffj\Bundle\HowToBundle\RouffjHowToBundle(),
         );
     }
 

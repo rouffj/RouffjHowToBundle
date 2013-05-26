@@ -1,0 +1,26 @@
+security:
+    access_decision_manager:
+        strategy: unanimous
+
+    encoders:
+            Symfony\Component\Security\Core\User\User: plaintext
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user1:  { password: user1, roles: ['ROLE_USER'] }
+                    user2:  { password: user2, roles: ['ROLE_USER'] }
+
+    firewalls:
+        voter_request_homepage:
+            pattern: ^/howto/security/voter/request$
+            anonymous: true
+        voter_request:
+            pattern:    ^/howto/security/voter/request
+            http_basic:
+                realm: "try 'user1/user1' or 'user2/user2'"
+
+    access_control:
+            - { path: ^/.*, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
+

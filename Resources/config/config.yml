@@ -1,0 +1,5 @@
+imports:
+    - { resource: security.yml }
+
+parameters:
+    test.client.class:      Rouffj\Bundle\HowToBundle\Tests\Client
