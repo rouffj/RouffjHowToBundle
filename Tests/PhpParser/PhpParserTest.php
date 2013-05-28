@@ -46,6 +46,5 @@ class PhpParserTest extends WebTestCase
         $this->assertEquals('method1', $stmts[1]->name);
         $this->assertEquals('items', $stmts[2]->var->name);
         $this->assertEquals('items', $stmts[3]->var->var->name);
-        $this->assertEquals('items', $stmts[4]);
     }
 }
