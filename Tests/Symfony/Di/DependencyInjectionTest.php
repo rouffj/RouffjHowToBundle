@@ -28,5 +28,6 @@ class DependencyInjectionTest extends WebTestCase
         $this->containerLoader->load('Factory/services.xml');
 
         $this->assertInstanceOf('Rouffj\Bundle\HowToBundle\Tests\Symfony\Di\Fixtures\Factory\UserRepository', $this->container->get('repository.user'));
+        $this->assertEquals('foo', $this->container->get('repository.user')->getPropertyA());
     }
 }

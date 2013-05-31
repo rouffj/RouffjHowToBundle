@@ -6,6 +6,9 @@
         <service id="doctrine" class="Rouffj\Bundle\HowToBundle\Tests\Symfony\Di\Fixtures\Factory\EntityManager" />
         <service id="repository.user" class="Rouffj\Bundle\HowToBundle\Tests\Symfony\Di\Fixtures\Factory\UserRepository" factory-service="doctrine" factory-method="getRepository">
             <argument>MyBundle:User</argument>
+            <call method="setPropertyA">
+                <argument>foo</argument>
+            </call>
         </service>
     </services>
 </container>
