@@ -1,5 +1,12 @@
 imports:
     - { resource: security.yml }
 
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    RouffjHowToDoctrine: { is_bundle: false, type: annotation, dir: %kernel.root_dir%/../vendor/rouffj/howto-bundle/Rouffj/Bundle/HowToBundle/Tests/Doctrine/Fixtures, prefix: Rouffj\Bundle\HowToBundle\Tests\Doctrine\Fixtures }
+
 parameters:
     test.client.class:      Rouffj\Bundle\HowToBundle\Tests\Client
