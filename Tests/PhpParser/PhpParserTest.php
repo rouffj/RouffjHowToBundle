@@ -24,6 +24,27 @@ class PhpParserTest extends WebTestCase
         $this->assertEquals('func1', $stmts[1]->name);
     }
 
+    public function testHowToAnalyzeChainedMethodCall()
+    {
+        $stmts = $this->parser->parse(file_get_contents(__DIR__.'/Fixtures/1/foo4.php'));
+
+        // A statement is read by php-parser from right to left. So the first statement is always the last call
+        $this->assertInstanceOf('PHPParser_Node_Expr_MethodCall', $stmts[0]);
+        $this->assertEquals('getEnvironment', $stmts[0]->name);
+        $this->assertInstanceOf('PHPParser_Node_Expr_Variable', $stmts[0]->var);
+        $this->assertEquals('myKernel', $stmts[0]->var->name);
+
+        $this->assertEquals('getEnvironment', $stmts[1]->name);
+        $this->assertEquals('get', $stmts[1]->var->name);
+            $this->assertEquals('kernel', $stmts[1]->var->args[0]->value->value, 'Retrieve the value of parameter get');
+        $this->assertEquals('this', $stmts[1]->var->var->name);
+
+        $this->assertEquals('getEnvironment', $stmts[2]->name);
+        $this->assertEquals('getKernel', $stmts[2]->var->name);
+        $this->assertEquals('getApplication', $stmts[2]->var->var->name);
+        $this->assertEquals('this', $stmts[2]->var->var->var->name);
+    }
+
     public function testHowToRetrieveStatementNameSupportingManyDeclarations()
     {
         $stmts = $this->parser->parse(file_get_contents(__DIR__.'/Fixtures/1/foo2.php'));
